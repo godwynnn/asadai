@@ -12,7 +12,7 @@ export function CompareDemo() {
         secondImageClassname="object-cover object-left-top"
         className="h-[250px] md:h-[100%] w-[100%]"
         slideMode="hover"
-        autoplay={true}
+        autoplay={false}
         />
     </div>
   );

@@ -1,0 +1,78 @@
+{/* Card Section */}
+        <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-36 lg:py-14 mx-auto bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,255,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)]">
+          {/* Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 bg-transparent rounded-lg">
+            {/* Card */}
+            <div className="flex flex-col gap-y-3 lg:gap-y-5 p-4 md:p-5 bg-transparent  border-0 shadow-2xs rounded-xl">
+              <div className="inline-flex justify-center items-center">
+                <span className="size-2 inline-block bg-gray-500 rounded-full me-2"></span>
+                <span className="text-xs font-semibold uppercase text-gray-600">Projects</span>
+              </div>
+
+              <div className="text-center">
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-blue-600">
+                  150
+                </h3>
+              </div>
+
+
+            </div>
+            {/* End Card */}
+
+
+
+            {/* Card */}
+            <div className="flex flex-col gap-y-3 lg:gap-y-5 p-4 md:p-5 bg-transparent  border-0 shadow-2xs rounded-xl">
+              <div className="inline-flex justify-center items-center">
+                <span className="size-2 inline-block bg-gray-500 rounded-full me-2"></span>
+                <span className="text-xs font-semibold uppercase text-gray-600">Projects</span>
+              </div>
+
+              <div className="text-center">
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-blue-600">
+                  150
+                </h3>
+              </div>
+
+
+            </div>
+            {/* End Card */}
+
+
+            {/* Card */}
+            <div className="flex flex-col gap-y-3 lg:gap-y-5 p-4 md:p-5 bg-transparent  border-0 shadow-2xs rounded-xl">
+              <div className="inline-flex justify-center items-center">
+                <span className="size-2 inline-block bg-gray-500 rounded-full me-2"></span>
+                <span className="text-xs font-semibold uppercase text-gray-600">Projects</span>
+              </div>
+
+              <div className="text-center">
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-blue-600">
+                  150
+                </h3>
+              </div>
+
+
+            </div>
+            {/* End Card */}
+
+            {/* Card */}
+            <div className="flex flex-col gap-y-3 lg:gap-y-5 p-4 md:p-5 bg-transparent  border-0 shadow-2xs rounded-xl">
+              <div className="inline-flex justify-center items-center">
+                <span className="size-2 inline-block bg-gray-500 rounded-full me-2"></span>
+                <span className="text-xs font-semibold uppercase text-gray-600">Projects</span>
+              </div>
+
+              <div className="text-center">
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-blue-600">
+                  150
+                </h3>
+              </div>
+
+
+            </div>
+            {/* End Card */}
+          </div>
+          {/* End Grid */}
+        </div>
+        {/* End Card Section */}

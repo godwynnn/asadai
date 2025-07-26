@@ -34,7 +34,7 @@ export const Navbar = ({
     <motion.div
       ref={ref}
       // IMPORTANT: Change this to class of `fixed` if you want the navbar to be fixed
-      className={cn("fixed inset-x-0 top-5 z-40 px-4 w-full", className)}>
+      className={cn("fixed inset-x-0 top-5 z-50 px-4 w-full", className)}>
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
           ? React.cloneElement(child, { visible })

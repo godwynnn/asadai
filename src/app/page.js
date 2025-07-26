@@ -22,6 +22,7 @@ import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { TextPlugin } from "gsap/TextPlugin";
 import { HeroSectionOne } from "../../components/HeroSectionOne";
 import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion"
 
 
 const LatoFont = Lato({
@@ -35,36 +36,67 @@ gsap.registerPlugin(ScrollTrigger);
 // gsap.registerPlugin(ScrollToPlugin);
 export default function Home() {
 
-  useGSAP(()=>{
-    gsap.from('.hero_img',{
-      scrollTrigger:{
-        trigger:".hero_img",
-        start:"top 40%",
+  useGSAP(() => {
+    const features_content = gsap.utils.toArray('.features_content')
+    gsap.from('.hero_img', {
+      scrollTrigger: {
+        trigger: ".hero_img",
+        start: "top 40%",
         // end:"top bottom",
         // markers:true,
         // scrub:true
       },
-      y:20,
-      opacity:0,
-      
+      y: 40,
+      opacity: 0,
+
     })
 
 
-     gsap.to('.hero_overlay',{
-      scrollTrigger:{
-        trigger:".hero_img",
-        start:"top 20%",
-        pin:true,
-        end:"bottom 95%",
-        // markers:true,
-        scrub:true,
-        snap:1
+    gsap.to('.hero_overlay', {
+      scrollTrigger: {
+        trigger: ".hero_img",
+        start: "5% 20%",
+        pin: true,
+        end: "bottom 60%",
+        // markers: true,
+        scrub: true,
+        // snap:1
       },
-      height:0
-      
+      height: 0
+
+    })
+
+
+    gsap.from(features_content, {
+      scrollTrigger: {
+        trigger: ".features_content_holder",
+        // markers:true,
+        start: "top 20%",
+
+      },
+      x: -20,
+      opacity: 0,
+      stagger: 0.5
+
     })
 
   })
+
+
+
+
+
+  const framer_2_content = `Turns your ideas into gallery-worthy visuals. Explore concepts without limits`
+
+  const framer_2 = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: framer_2,
+    offset: ["start 0.6", "start 0.25"]
+  })
+
+  const framer_words = framer_2_content.split(" ")
+
+
   return (
     <div className="w-full min-h-[120vh] bg-[#000814] pt-0">
 
@@ -155,7 +187,7 @@ export default function Home() {
 
 
               </div>
-              
+
 
             </SpotlightPreview>
 
@@ -168,84 +200,13 @@ export default function Home() {
 
 
 
-        {/* Card Section */}
-        <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-36 lg:py-14 mx-auto bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,255,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)]">
-          {/* Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 bg-transparent rounded-lg">
-            {/* Card */}
-            <div className="flex flex-col gap-y-3 lg:gap-y-5 p-4 md:p-5 bg-transparent  border-0 shadow-2xs rounded-xl">
-              <div className="inline-flex justify-center items-center">
-                <span className="size-2 inline-block bg-gray-500 rounded-full me-2"></span>
-                <span className="text-xs font-semibold uppercase text-gray-600">Projects</span>
-              </div>
+        <div className="max-w-[85rem] px-14 py-10 sm:px-6 lg:px-44 lg:py-14 mx-auto bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,255,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)]">
+          <p className="text-gray-300 font-extralight text-center mt-24 text-3xl  md:text-6xl">Make Images That <span className="text-violet-600">Speak</span> Volumes</p>
 
-              <div className="text-center">
-                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-blue-600">
-                  150
-                </h3>
-              </div>
-
-
-            </div>
-            {/* End Card */}
-
-
-
-            {/* Card */}
-            <div className="flex flex-col gap-y-3 lg:gap-y-5 p-4 md:p-5 bg-transparent  border-0 shadow-2xs rounded-xl">
-              <div className="inline-flex justify-center items-center">
-                <span className="size-2 inline-block bg-gray-500 rounded-full me-2"></span>
-                <span className="text-xs font-semibold uppercase text-gray-600">Projects</span>
-              </div>
-
-              <div className="text-center">
-                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-blue-600">
-                  150
-                </h3>
-              </div>
-
-
-            </div>
-            {/* End Card */}
-
-
-            {/* Card */}
-            <div className="flex flex-col gap-y-3 lg:gap-y-5 p-4 md:p-5 bg-transparent  border-0 shadow-2xs rounded-xl">
-              <div className="inline-flex justify-center items-center">
-                <span className="size-2 inline-block bg-gray-500 rounded-full me-2"></span>
-                <span className="text-xs font-semibold uppercase text-gray-600">Projects</span>
-              </div>
-
-              <div className="text-center">
-                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-blue-600">
-                  150
-                </h3>
-              </div>
-
-
-            </div>
-            {/* End Card */}
-
-            {/* Card */}
-            <div className="flex flex-col gap-y-3 lg:gap-y-5 p-4 md:p-5 bg-transparent  border-0 shadow-2xs rounded-xl">
-              <div className="inline-flex justify-center items-center">
-                <span className="size-2 inline-block bg-gray-500 rounded-full me-2"></span>
-                <span className="text-xs font-semibold uppercase text-gray-600">Projects</span>
-              </div>
-
-              <div className="text-center">
-                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-blue-600">
-                  150
-                </h3>
-              </div>
-
-
-            </div>
-            {/* End Card */}
-          </div>
-          {/* End Grid */}
         </div>
-        {/* End Card Section */}
+
+        
+
 
 
 
@@ -253,9 +214,9 @@ export default function Home() {
         <InfiniteMovingCardsDemo />
         <div className="relative w-full h-[100vh] px-2 md:px-20 flex flex-col lg:flex-row md:flex-col text-white items-center">
           <div className="lg:w-[60%]  ">
-            <p className="text-3xl md:text-7xl">Built for Speed and Simplicity</p>
-            <p className="font-extralight  text-gray-500">
-              We’ve made image generation as simple as typing a message.
+            <p className="text-3xl lg:text-8xl md:text-7xl">Built for Speed and Simplicity</p>
+            <p className="font-extralight md:text-2xl  text-gray-500">
+              We have made image generation as simple as typing a message.
               No loading, no lag — just lightning-fast output.
               Choose your style, write a prompt, and go.
               See results in seconds.
@@ -288,9 +249,9 @@ export default function Home() {
 
 
             {/* Grid */}
-            <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:items-center">
+            <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:items-center">
               {/* Card */}
-              <div className="flex flex-col border border-gray-200 text-center bg-[whitesmoke] rounded-xl p-8">
+              <div className="flex flex-col md:h-[70vh] border border-gray-200 text-center bg-[whitesmoke] rounded-xl p-8">
                 <h4 className="font-medium text-lg text-gray-800">Free</h4>
                 <span className="mt-7 font-bold text-5xl text-gray-800">Free</span>
                 <p className="mt-2 text-sm text-gray-500">Forever free</p>
@@ -325,7 +286,7 @@ export default function Home() {
               {/* End Card */}
 
               {/* Card */}
-              <div className="flex flex-col border-2 border-blue-600 text-center shadow-xl bg-[whitesmoke] rounded-xl p-8">
+              <div className="flex flex-col md:h-[80vh] border-2 border-blue-600 text-center shadow-xl bg-[whitesmoke] rounded-xl p-8">
                 <p className="mb-3"><span className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-lg text-xs uppercase font-semibold bg-blue-100 text-blue-800">Most popular</span></p>
                 <h4 className="font-medium text-lg text-gray-800">Startup</h4>
                 <span className="mt-5 font-bold text-5xl text-gray-800">
@@ -364,7 +325,7 @@ export default function Home() {
               {/* End Card */}
 
               {/* Card */}
-              <div className="flex flex-col border border-gray-200 text-center bg-[whitesmoke] rounded-xl p-8">
+              <div className="flex flex-col md:h-[70vh] border border-gray-200 text-center bg-[whitesmoke] rounded-xl p-8">
                 <h4 className="font-medium text-lg text-gray-800">Team</h4>
                 <span className="mt-5 font-bold text-5xl text-gray-800">
                   <span className="font-bold text-2xl -me-2">$</span>
@@ -401,43 +362,7 @@ export default function Home() {
               </div>
               {/* End Card */}
 
-              {/* Card */}
-              <div className="flex flex-col border border-gray-200 text-center bg-[whitesmoke] rounded-xl p-8">
-                <h4 className="font-medium text-lg text-gray-800">Enterprise</h4>
-                <span className="mt-5 font-bold text-5xl text-gray-800">
-                  <span className="font-bold text-2xl -me-2">$</span>
-                  149
-                </span>
-                <p className="mt-2 text-sm text-gray-500">Advanced features for scaling your business</p>
 
-                <ul className="mt-7 space-y-2.5 text-sm">
-                  <li className="flex gap-x-2">
-                    <svg className="shrink-0 mt-0.5 size-4 text-blue-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
-                    <span className="text-gray-800">
-                      10 users
-                    </span>
-                  </li>
-
-                  <li className="flex gap-x-2">
-                    <svg className="shrink-0 mt-0.5 size-4 text-blue-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
-                    <span className="text-gray-800">
-                      Plan features
-                    </span>
-                  </li>
-
-                  <li className="flex gap-x-2">
-                    <svg className="shrink-0 mt-0.5 size-4 text-blue-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
-                    <span className="text-gray-800">
-                      Product support
-                    </span>
-                  </li>
-                </ul>
-
-                <a className="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-gray-50" href="#">
-                  Sign up
-                </a>
-              </div>
-              {/* End Card */}
             </div>
             {/* End Grid */}
 
@@ -454,26 +379,39 @@ export default function Home() {
             {/* <div class="absolute top-0 z-[-2] h-screen w-screen bg-white bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,255,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)]"></div> */}
             {/* Grid */}
             <div className="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
-              <h2 className="font-extralight text-3xl lg:text-8xl text-gray-100">
-                Turns your ideas into gallery-worthy visuals. Explore concepts without limits
-              </h2>
+              <p className="font-extralight text-3xl lg:text-8xl text-gray-100 flex flex-wrap" ref={framer_2}>
+                {
+                  framer_words.map((word, i) => {
+
+                    return (<FramerDesc key={i} word={word} framer_words={framer_words} i={i} scrollYProgress={scrollYProgress} />)
+                  })
+                }
+              </p>
 
               {/* End Col */}
 
               <div className="mt-5 sm:mt-10 lg:mt-0">
                 <div className="space-y-6 sm:space-y-8">
                   {/* Title */}
-                  <div className=" relative space-y-2 md:space-y-4">
-                    
-                    <div>
-                      <Image className="rounded-xl md:h-[90vh]  md:w-[70%]  float-right" height={1000} width={1000} src={"https://res.cloudinary.com/dtt4nxboi/image/upload/v1753396179/2151719638_cgsfrf.jpg"} alt="Features Image" />
+                  <div className=" relative space-y-2 md:space-y-4 features_content_holder">
+
+                    <div className="features_content z-10 flex p-5 justify-center items-center rounded-xl md:absolute top-54 backdrop-blur-3xl bg-[#000814] md:h-[60vh]  md:w-[70%] float-right">
+                      <p className="text-gray-100 ">
+                        Besides working with start-up enterprises as a partner for digitalization, we have built enterprise products for common pain points that we have encountered in various products and projects.
+                      </p>
                     </div>
 
-                    <div className="flex p-5 justify-center items-center rounded-xl md:absolute top-54 backdrop-blur-3xl bg-[#000814] md:h-[60vh]  md:w-[70%] float-right">
-                        <p className="text-gray-100">
-                      Besides working with start-up enterprises as a partner for digitalization, we have built enterprise products for common pain points that we have encountered in various products and projects.
-                    </p>
+                    <div className="features_content  md:h-[90vh] md:w-[70%] float-right
+                    relative  w-full max-w-md rounded-3xl bg-white/5 backdrop-blur-sm p-2 shadow-2xl border border-white/10
+                    ">
+                      <Image className="rounded-xl md:h-[100%]  md:w-[100%]  " height={1000} width={1000} src={"https://res.cloudinary.com/dtt4nxboi/image/upload/v1753396179/2151719638_cgsfrf.jpg"} alt="Features Image" />
+                      {/* <div className="absolute  rounded-xl h-[100%]
+                        w-full 
+
+                        "></div> */}
                     </div>
+
+
                   </div>
                   {/* End Title */}
 
@@ -599,4 +537,21 @@ export default function Home() {
     </div>
 
   );
+}
+
+
+const FramerDesc = ({ word, framer_words, i, scrollYProgress }) => {
+
+  const start = i / framer_words.length
+  const end = start + (1 / framer_words.length)
+  const opacity = useTransform(scrollYProgress, [start, end], [0, 1])
+
+  return (
+    <span className="relative mr-2 mt-2" key={i}>
+      <span className="absolute opacity-[0.3]">{word}</span>
+      <motion.span key={i} style={{ opacity: opacity }}>{word}</motion.span>
+
+    </span>
+  )
+
 }
