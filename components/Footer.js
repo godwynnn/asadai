@@ -7,14 +7,14 @@ export default function Footer() {
   {/* Grid */}
   <div className="text-center">
     <div>
-      <a className="flex-none text-xl font-semibold text-black" href="#" aria-label="Brand">Brand</a>
+      <a className="flex-none text-4xl font-semibold text-gray-300" href="#" aria-label="Brand">Brand</a>
     </div>
     {/* End Col */}
 
     <div className="mt-3">
       <p className="text-gray-500">We're part of the <a className="text-blue-600 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium" href="#">Htmlstream</a> family.</p>
       <p className="text-gray-500">
-        © 2025 Preline Labs.
+        © 2025 Asad-ai.
       </p>
     </div>
 

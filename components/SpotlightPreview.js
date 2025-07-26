@@ -11,7 +11,7 @@ export function SpotlightPreview({children}) {
           "pointer-events-none absolute inset-0 [background-size:40px_40px] select-none",
         //   "[background-image:linear-gradient(to_right,#171717_1px,transparent_1px),linear-gradient(to_bottom,#171717_1px,transparent_1px)]"
         )} />
-      <Spotlight className="-top-40 left-0 md:-top-20 md:left-150" fill="white" />
+      <Spotlight className="-top-40 hidden md:block left-0 md:-top-20 md:left-150" fill="white" />
       {children}
     </div>
   );

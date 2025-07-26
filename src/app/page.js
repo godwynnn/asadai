@@ -1,3 +1,4 @@
+"use client"
 import "./globals.css";
 import Image from "next/image";
 import { CompareDemo } from "../../components/CompareDemo";
@@ -12,32 +13,69 @@ import { NavbarDemo } from "../../components/NavbarDemo";
 import Footer from "../../components/Footer";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-    
+
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import { Observer } from "gsap/Observer";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 // ScrollSmoother requires ScrollTrigger
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { TextPlugin } from "gsap/TextPlugin";
+import { HeroSectionOne } from "../../components/HeroSectionOne";
+import { useRef } from "react";
+
 
 const LatoFont = Lato({
   weight: '400',
   subsets: ["latin"],
 });
 
-
+gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollSmoother);
+// gsap.registerPlugin(ScrollToPlugin);
 export default function Home() {
+
+  useGSAP(()=>{
+    gsap.from('.hero_img',{
+      scrollTrigger:{
+        trigger:".hero_img",
+        start:"top 40%",
+        // end:"top bottom",
+        // markers:true,
+        // scrub:true
+      },
+      y:20,
+      opacity:0,
+      
+    })
+
+
+     gsap.to('.hero_overlay',{
+      scrollTrigger:{
+        trigger:".hero_img",
+        start:"top 20%",
+        pin:true,
+        end:"bottom 95%",
+        // markers:true,
+        scrub:true,
+        snap:1
+      },
+      height:0
+      
+    })
+
+  })
   return (
     <div className="w-full min-h-[120vh] bg-[#000814] pt-0">
 
       <NavbarDemo>
-        <div className="relative bg-linear-to-b mx-auto    [background:radial-gradient(105%_125%_at_50%_10%,#1b263b_35%,#000814_50%)] min-h-[120vh] flex flex-col header  ">
+        <div className="relative bg-linear-to-b mx-auto    [background:radial-gradient(105%_125%_at_50%_10%,#1b263b_35%,black_50%)] min-h-[120vh] flex flex-col header  ">
           {/* <div class="absolute inset-0 z-10 h-full w-full items-center px-5 py-24 "> */}
 
-          
+
           <BackgroundBeamsWithCollision>
             <SpotlightPreview>
-              <div className="w-full  space-y-8 px-4 sm:px-6 lg:px-8 z-20 md:translate-y-0 translate-y-[30%] ">
+              <div className="w-full flex flex-col   space-y-8 px-4 sm:px-6 lg:px-8 z-20 md:translate-y-0 translate-y-[30%] ">
                 {/* Announcement Banner */}
                 <div className="flex justify-center">
                   <a className="group inline-flex items-center bg-white/10 hover:bg-white/10 border border-white/10 p-1 ps-4 rounded-full shadow-md focus:outline-hidden focus:bg-white/10" href="../figma.html">
@@ -69,7 +107,7 @@ export default function Home() {
 
 
                 {/* Input */}
-                <div className="relative md:mx-50 focus:border-0">
+                <div className="relative md:w-[60%] md:mx-auto focus:border-0">
                   <textarea className="p-3 sm:p-4 pb-12 sm:pb-12 block w-full  bg-transparent text-white border-gray-400 border-2 rounded-2xl sm:text-sm  focus:ring-blue-500" placeholder="Ask me anything..."></textarea>
 
                   {/* Toolbar */}
@@ -114,31 +152,24 @@ export default function Home() {
                   {/* End Toolbar */}
                 </div>
                 {/* End Input */}
+
+
               </div>
-              <div className=" absolute bottom-0 h-[10vh] hidden md:block [background:radial-gradient(100%_105%_at_50%_90%,#1b263b_30%,#000814_80%)] w-full">
-                {/* <Image
-          className="w-[80px] h-[80px] absolute top-[15%] right-[15%] rotate-10 "
-          height={1000}
-          width={1000}
-          src={'https://res.cloudinary.com/dtt4nxboi/image/upload/v1753228142/portrait-woman-with-big-smile-her-eyes-are-crinkled-her-cheeks-are-full-she-is-happy-content_73899-33059_na998u.avif'}/>
-        
-         <Image
-          className="w-[150px] h-[80px] absolute top-[15%] left-[15%] -rotate-10 "
-          height={1000}
-          width={1000}
-          src={'https://res.cloudinary.com/dtt4nxboi/image/upload/v1753313190/technology-background-female-face-robot-artificial-intelligence-data-flow-concept-generative-ai_454018-334-removebg-preview_w7arhq.png'}/>
-        
-         */}
-              </div>
+              
+
             </SpotlightPreview>
+
+
           </BackgroundBeamsWithCollision>
 
         </div>
 
+        <HeroSectionOne />
+
 
 
         {/* Card Section */}
-        <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-36 lg:py-14 mx-auto">
+        <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-36 lg:py-14 mx-auto bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,255,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)]">
           {/* Grid */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 bg-transparent rounded-lg">
             {/* Card */}
@@ -419,64 +450,34 @@ export default function Home() {
 
 
           {/* Features */}
-          <div className="max-w-[85rem]  px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,255,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)]">
+          <div className="max-w-[85rem]  px-4 py-10 sm:px-6 lg:px-14 lg:py-14 mx-auto bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,255,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)]">
             {/* <div class="absolute top-0 z-[-2] h-screen w-screen bg-white bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,255,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)]"></div> */}
             {/* Grid */}
             <div className="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
-              <div>
-                <Image className="rounded-xl h-[100vh] w-full" height={1000} width={1000} src={"https://res.cloudinary.com/dtt4nxboi/image/upload/v1753396179/2151719638_cgsfrf.jpg"} alt="Features Image" />
-              </div>
+              <h2 className="font-extralight text-3xl lg:text-8xl text-gray-100">
+                Turns your ideas into gallery-worthy visuals. Explore concepts without limits
+              </h2>
+
               {/* End Col */}
 
               <div className="mt-5 sm:mt-10 lg:mt-0">
                 <div className="space-y-6 sm:space-y-8">
                   {/* Title */}
-                  <div className="space-y-2 md:space-y-4">
-                    <h2 className="font-bold text-3xl lg:text-4xl text-gray-100">
-                      We tackle the challenges start-ups face
-                    </h2>
-                    <p className="text-gray-500">
+                  <div className=" relative space-y-2 md:space-y-4">
+                    
+                    <div>
+                      <Image className="rounded-xl md:h-[90vh]  md:w-[70%]  float-right" height={1000} width={1000} src={"https://res.cloudinary.com/dtt4nxboi/image/upload/v1753396179/2151719638_cgsfrf.jpg"} alt="Features Image" />
+                    </div>
+
+                    <div className="flex p-5 justify-center items-center rounded-xl md:absolute top-54 backdrop-blur-3xl bg-[#000814] md:h-[60vh]  md:w-[70%] float-right">
+                        <p className="text-gray-100">
                       Besides working with start-up enterprises as a partner for digitalization, we have built enterprise products for common pain points that we have encountered in various products and projects.
                     </p>
+                    </div>
                   </div>
                   {/* End Title */}
 
-                  {/* List */}
-                  <ul className="space-y-2 sm:space-y-4">
-                    <li className="flex gap-x-3">
-                      <span className="mt-0.5 size-5 flex justify-center items-center rounded-full bg-blue-50 text-blue-600">
-                        <svg className="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
-                      </span>
-                      <div className="grow">
-                        <span className="text-sm sm:text-base text-gray-500">
-                          <span className="font-bold">Easy & fast</span> designing
-                        </span>
-                      </div>
-                    </li>
 
-                    <li className="flex gap-x-3">
-                      <span className="mt-0.5 size-5 flex justify-center items-center rounded-full bg-blue-50 text-blue-600">
-                        <svg className="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
-                      </span>
-                      <div className="grow">
-                        <span className="text-sm sm:text-base text-gray-500">
-                          Powerful <span className="font-bold">features</span>
-                        </span>
-                      </div>
-                    </li>
-
-                    <li className="flex gap-x-3">
-                      <span className="mt-0.5 size-5 flex justify-center items-center rounded-full bg-blue-50 text-blue-600">
-                        <svg className="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
-                      </span>
-                      <div className="grow">
-                        <span className="text-sm sm:text-base text-gray-500">
-                          User Experience Design
-                        </span>
-                      </div>
-                    </li>
-                  </ul>
-                  {/* End List */}
                 </div>
               </div>
               {/* End Col */}
@@ -496,104 +497,104 @@ export default function Home() {
 
 
         {/* FAQ */}
-<div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-  {/* Title */}
-  <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-    <h2 className="text-2xl font-bold md:text-4xl md:leading-tight">Your questions, answered</h2>
-    <p className="mt-1 text-gray-600">Answers to the most frequently asked questions.</p>
-  </div>
-  {/* End Title */}
+        <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+          {/* Title */}
+          <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
+            <h2 className="text-2xl font-bold md:text-4xl text-white md:leading-tight">FAQ</h2>
+            <p className="mt-1 text-gray-100">Answers to the most frequently asked questions.</p>
+          </div>
+          {/* End Title */}
 
-  <div className="max-w-2xl mx-auto">
-    {/* Accordion */}
-    <div className="hs-accordion-group">
-      <div className="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl p-6 active" id="hs-basic-with-title-and-arrow-stretched-heading-one">
-        <button className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-hidden focus:text-gray-500" aria-expanded="true" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-one">
-          Can I cancel at anytime?
-          <svg className="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          <svg className="hs-accordion-active:block hidden shrink-0 size-5 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m18 15-6-6-6 6"/></svg>
-        </button>
-        <div id="hs-basic-with-title-and-arrow-stretched-collapse-one" className="hs-accordion-content w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-one">
-          <p className="text-gray-800">
-            Yes, you can cancel anytime no questions are asked while you cancel but we would highly appreciate if you will give us some feedback.
-          </p>
+          <div className="max-w-2xl mx-auto">
+            {/* Accordion */}
+            <div className="hs-accordion-group">
+              <div className="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl p-6 active" id="hs-basic-with-title-and-arrow-stretched-heading-one">
+                <button className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-hidden focus:text-gray-500" aria-expanded="true" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-one">
+                  Can I cancel at anytime?
+                  <svg className="hs-accordion-active:hidden block shrink-0 size-5 text-gray-100 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
+                  <svg className="hs-accordion-active:block hidden shrink-0 size-5 text-gray-100 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m18 15-6-6-6 6" /></svg>
+                </button>
+                <div id="hs-basic-with-title-and-arrow-stretched-collapse-one" className="hs-accordion-content w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-one">
+                  <p className="text-gray-400">
+                    Yes, you can cancel anytime no questions are asked while you cancel but we would highly appreciate if you will give us some feedback.
+                  </p>
+                </div>
+              </div>
+
+              <div className="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl p-6" id="hs-basic-with-title-and-arrow-stretched-heading-two">
+                <button className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-hidden focus:text-gray-500" aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-two">
+                  My team has credits. How do we use them?
+                  <svg className="hs-accordion-active:hidden block shrink-0 size-5 text-gray-100 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
+                  <svg className="hs-accordion-active:block hidden shrink-0 size-5 text-gray-100 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m18 15-6-6-6 6" /></svg>
+                </button>
+                <div id="hs-basic-with-title-and-arrow-stretched-collapse-two" className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-two">
+                  <p className="text-gray-400">
+                    Once your team signs up for a subscription plan. This is where we sit down, grab a cup of coffee and dial in the details.
+                  </p>
+                </div>
+              </div>
+
+              <div className="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl p-6" id="hs-basic-with-title-and-arrow-stretched-heading-three">
+                <button className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-hidden focus:text-gray-500" aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-three">
+                  How does Preline's pricing work?
+                  <svg className="hs-accordion-active:hidden block shrink-0 size-5 text-gray-100 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
+                  <svg className="hs-accordion-active:block hidden shrink-0 size-5 text-gray-100 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m18 15-6-6-6 6" /></svg>
+                </button>
+                <div id="hs-basic-with-title-and-arrow-stretched-collapse-three" className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-three">
+                  <p className="text-gray-400">
+                    Our subscriptions are tiered. Understanding the task at hand and ironing out the wrinkles is key.
+                  </p>
+                </div>
+              </div>
+
+              <div className="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl p-6" id="hs-basic-with-title-and-arrow-stretched-heading-four">
+                <button className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-hidden focus:text-gray-500" aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-four">
+                  How secure is Preline?
+                  <svg className="hs-accordion-active:hidden block shrink-0 size-5 text-gray-100 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
+                  <svg className="hs-accordion-active:block hidden shrink-0 size-5 text-gray-100 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m18 15-6-6-6 6" /></svg>
+                </button>
+                <div id="hs-basic-with-title-and-arrow-stretched-collapse-four" className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-four">
+                  <p className="text-gray-400">
+                    Protecting the data you trust to Preline is our first priority. This part is really crucial in keeping the project in line to completion.
+                  </p>
+                </div>
+              </div>
+
+              <div className="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl p-6" id="hs-basic-with-title-and-arrow-stretched-heading-five">
+                <button className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-hidden focus:text-gray-500" aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-five">
+                  How do I get access to a theme I purchased?
+                  <svg className="hs-accordion-active:hidden block shrink-0 size-5 text-gray-100 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
+                  <svg className="hs-accordion-active:block hidden shrink-0 size-5 text-gray-100 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m18 15-6-6-6 6" /></svg>
+                </button>
+                <div id="hs-basic-with-title-and-arrow-stretched-collapse-five" className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-five">
+                  <p className="text-gray-400">
+                    If you lose the link for a theme you purchased, don't panic! We've got you covered. You can login to your account, tap your avatar in the upper right corner, and tap Purchases. If you didn't create a login or can't remember the information, you can use our handy Redownload page, just remember to use the same email you originally made your purchases with.
+                  </p>
+                </div>
+              </div>
+
+              <div className="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl p-6" id="hs-basic-with-title-and-arrow-stretched-heading-six">
+                <button className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-hidden focus:text-gray-500" aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-six">
+                  Upgrade License Type
+                  <svg className="hs-accordion-active:hidden block shrink-0 size-5 text-gray-100 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
+                  <svg className="hs-accordion-active:block hidden shrink-0 size-5 text-gray-100 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m18 15-6-6-6 6" /></svg>
+                </button>
+                <div id="hs-basic-with-title-and-arrow-stretched-collapse-six" className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-six">
+                  <p className="text-gray-400">
+                    There may be times when you need to upgrade your license from the original type you purchased and we have a solution that ensures you can apply your original purchase cost to the new license purchase.
+                  </p>
+                </div>
+              </div>
+            </div>
+            {/* End Accordion */}
+          </div>
         </div>
-      </div>
-
-      <div className="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl p-6" id="hs-basic-with-title-and-arrow-stretched-heading-two">
-        <button className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-hidden focus:text-gray-500" aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-two">
-          My team has credits. How do we use them?
-          <svg className="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          <svg className="hs-accordion-active:block hidden shrink-0 size-5 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m18 15-6-6-6 6"/></svg>
-        </button>
-        <div id="hs-basic-with-title-and-arrow-stretched-collapse-two" className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-two">
-          <p className="text-gray-800">
-            Once your team signs up for a subscription plan. This is where we sit down, grab a cup of coffee and dial in the details.
-          </p>
-        </div>
-      </div>
-
-      <div className="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl p-6" id="hs-basic-with-title-and-arrow-stretched-heading-three">
-        <button className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-hidden focus:text-gray-500" aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-three">
-          How does Preline's pricing work?
-          <svg className="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          <svg className="hs-accordion-active:block hidden shrink-0 size-5 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m18 15-6-6-6 6"/></svg>
-        </button>
-        <div id="hs-basic-with-title-and-arrow-stretched-collapse-three" className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-three">
-          <p className="text-gray-800">
-            Our subscriptions are tiered. Understanding the task at hand and ironing out the wrinkles is key.
-          </p>
-        </div>
-      </div>
-
-      <div className="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl p-6" id="hs-basic-with-title-and-arrow-stretched-heading-four">
-        <button className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-hidden focus:text-gray-500" aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-four">
-          How secure is Preline?
-          <svg className="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          <svg className="hs-accordion-active:block hidden shrink-0 size-5 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m18 15-6-6-6 6"/></svg>
-        </button>
-        <div id="hs-basic-with-title-and-arrow-stretched-collapse-four" className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-four">
-          <p className="text-gray-800">
-            Protecting the data you trust to Preline is our first priority. This part is really crucial in keeping the project in line to completion.
-          </p>
-        </div>
-      </div>
-
-      <div className="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl p-6" id="hs-basic-with-title-and-arrow-stretched-heading-five">
-        <button className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-hidden focus:text-gray-500" aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-five">
-          How do I get access to a theme I purchased?
-          <svg className="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          <svg className="hs-accordion-active:block hidden shrink-0 size-5 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m18 15-6-6-6 6"/></svg>
-        </button>
-        <div id="hs-basic-with-title-and-arrow-stretched-collapse-five" className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-five">
-          <p className="text-gray-800">
-            If you lose the link for a theme you purchased, don't panic! We've got you covered. You can login to your account, tap your avatar in the upper right corner, and tap Purchases. If you didn't create a login or can't remember the information, you can use our handy Redownload page, just remember to use the same email you originally made your purchases with.
-          </p>
-        </div>
-      </div>
-
-      <div className="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl p-6" id="hs-basic-with-title-and-arrow-stretched-heading-six">
-        <button className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-hidden focus:text-gray-500" aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-six">
-          Upgrade License Type
-          <svg className="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          <svg className="hs-accordion-active:block hidden shrink-0 size-5 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m18 15-6-6-6 6"/></svg>
-        </button>
-        <div id="hs-basic-with-title-and-arrow-stretched-collapse-six" className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-six">
-          <p className="text-gray-800">
-            There may be times when you need to upgrade your license from the original type you purchased and we have a solution that ensures you can apply your original purchase cost to the new license purchase.
-          </p>
-        </div>
-      </div>
-    </div>
-    {/* End Accordion */}
-  </div>
-</div>
-{/* End FAQ */}
+        {/* End FAQ */}
 
 
-<Footer/>
+        <Footer />
 
-</NavbarDemo>
+      </NavbarDemo>
 
     </div>
 

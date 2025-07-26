@@ -16,11 +16,11 @@ export const Spotlight = ({
       fill="none">
       <g filter="url(#filter)">
         <ellipse
-          cx="1924.71"
-          cy="273.501"
+          cx="2800.71"
+          cy="250.501"
           rx="1924.71"
-          ry="273.501"
-          transform="matrix(-0.8 -0.5 -0.5 0.8 3631.88 2291.09)"
+          ry="250.501"
+          transform="matrix(-0.8 -0.5 -0.5 0.8 3631.88 2900.09)"
           fill={fill || "white"}
           fillOpacity="0.21"></ellipse>
       </g>
