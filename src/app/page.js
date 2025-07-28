@@ -23,9 +23,15 @@ import { TextPlugin } from "gsap/TextPlugin";
 import { HeroSectionOne } from "../../components/HeroSectionOne";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion"
-
+import { StickyScrollRevealDemo } from "../../components/StickyScrollRevealDemo";
+import { Goldman } from "next/font/google";
 
 const LatoFont = Lato({
+  weight: '400',
+  subsets: ["latin"],
+});
+
+const GoldmanFont = Goldman({
   weight: '400',
   subsets: ["latin"],
 });
@@ -36,8 +42,33 @@ gsap.registerPlugin(ScrollTrigger);
 // gsap.registerPlugin(ScrollToPlugin);
 export default function Home() {
 
+  const HighLightRef = useRef()
+
   useGSAP(() => {
     const features_content = gsap.utils.toArray('.features_content')
+    const highlight = gsap.utils.toArray('.highlight')
+
+    gsap.from('.highlight', {
+        scrollTrigger: {
+          trigger: ".highlight_holder",
+          start: "40% top",
+          // end:"bottom top",
+          // markers: true,
+          // pin:true,
+          scrub:true,
+          onEnter: () => {
+            console.log(element)
+          },
+          
+        },
+        
+        y:20,
+        opacity:0,
+        stagger:0.3,
+        
+      })
+
+
     gsap.from('.hero_img', {
       scrollTrigger: {
         trigger: ".hero_img",
@@ -123,8 +154,8 @@ export default function Home() {
 
                 {/* Title */}
                 <div className="max-w-3xl text-center mx-auto  ">
-                  <h1 className="block font-medium text-gray-200 text-5xl sm:text-5xl md:text-7xl lg:text-7xl">
-                    Your Creativity Enhanced by AI,<span className="text-violet-600"> Your Visual Story</span>
+                  <h1 className="block font-extrabold text-gray-200 text-5xl sm:text-5xl md:text-7xl lg:text-8xl">
+                    Your Creativity Enhanced by AI, Your<span className="text-violet-600"> Visual Story</span>
                   </h1>
                 </div>
                 {/* End Title */}
@@ -200,22 +231,49 @@ export default function Home() {
 
 
 
-        <div className="max-w-[85rem] px-14 py-10 sm:px-6 lg:px-44 lg:py-14 mx-auto bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,255,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)]">
-          <p className="text-gray-300 font-extralight text-center mt-24 text-3xl  md:text-6xl">Make Images That <span className="text-violet-600">Speak</span> Volumes</p>
+        <div className="relative max-w-[85rem] w-full text-7xl  md:text-9xl space-y-16 px-14 py-10 sm:px-6 lg:px-44 lg:py-14 text-gray-100  x mx-auto text-center
+        highlight_holder font-medium
+        bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,255,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)]">
+          <p className="highlight relative md:text-left  md:text-white ">Make  </p>
+          <p className="highlight md:text-center">Images That <span className="text-violet-600">Speak</span></p>
+          <p className="highlight z-20 md:text-right md:text-white">Volumes</p>
+
+
+          {/* <div className="highlight  text-left w-full  py-2">
+            <p className="md:text-white left-0  ">Make Images </p>
+          </div>
+
+          <div className="highlight w-full relative right-0 py-2 text-center">
+            <p> That <span className="text-violet-600 ">Speak</span></p>
+          </div>
+
+
+          <div className="highlight w-full py-2 text-right">
+            <p className="md:text-white">Volumes</p>
+
+
+          </div> */}
+
+
+          {/* <div className="absolute bg-[whitesmoke]  top-8 left-0 md:h-[30%] md:w-[40%]"></div> */}
+
+          {/* <div className="absolute bg-[whitesmoke]   bottom-10 right-0 md:h-[30%] md:w-[40%]"></div> */}
 
         </div>
 
-        
+
+
+
 
 
 
 
 
         <InfiniteMovingCardsDemo />
-        <div className="relative w-full h-[100vh] px-2 md:px-20 flex flex-col lg:flex-row md:flex-col text-white items-center">
+        <div className="relative w-full h-[100vh] px-2 md:px-20 flex flex-col lg:flex-row md:flex-col text-[whitesmoke] items-center">
           <div className="lg:w-[60%]  ">
-            <p className="text-3xl lg:text-8xl md:text-7xl">Built for Speed and Simplicity</p>
-            <p className="font-extralight md:text-2xl  text-gray-500">
+            <p className="font-semibold text-3xl lg:text-8xl md:text-7xl">Built for Speed and Simplicity</p>
+            <p className="font-extralight md:text-2xl  text-gray-300">
               We have made image generation as simple as typing a message.
               No loading, no lag — just lightning-fast output.
               Choose your style, write a prompt, and go.
@@ -249,7 +307,7 @@ export default function Home() {
 
 
             {/* Grid */}
-            <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:items-center">
+            <div className={["mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:items-center font-extrabold", GoldmanFont.className]}>
               {/* Card */}
               <div className="flex flex-col md:h-[70vh] border border-gray-200 text-center bg-[whitesmoke] rounded-xl p-8">
                 <h4 className="font-medium text-lg text-gray-800">Free</h4>

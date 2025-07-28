@@ -2,6 +2,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import { Goldman } from "next/font/google";
+import { Lato } from "next/font/google";
+import { Josefin_Sans } from "next/font/google";
+import { PT_Sans } from "next/font/google";
 
 export const metadata = {
   title: "Create Next App",
@@ -11,11 +14,29 @@ const GoldmanFont = Goldman({
   weight: '400',
   subsets: ["latin"],
 });
+
+const Josefin_SansFont = Josefin_Sans({
+  weight: '100',
+  subsets: ["latin"],
+});
+
+
+const LatoFont = Lato({
+  weight: '100',
+  subsets: ["latin"],
+});
+
+
+const PT_SansFont = PT_Sans({
+  weight: '400',
+  subsets: ["latin"],
+});
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={GoldmanFont.className}
+        className={LatoFont.className}
       >
         {children}
       </body>

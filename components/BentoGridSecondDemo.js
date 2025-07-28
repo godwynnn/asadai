@@ -38,21 +38,21 @@ const items = [
 
 
     className: "md:col-span-2",
-    icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
+    icon: <IconClipboardCopy className="h-4 w-4 text-neutral-300" />,
   },
   {
     title: "The Digital Revolution",
     description: "Dive into the transformative power of technology.",
     header: <Skeleton  url={'https://res.cloudinary.com/dtt4nxboi/image/upload/v1753396214/2151558755_yo0tqp.jpg'}/>,
     className: "md:col-span-1",
-    icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
+    icon: <IconFileBroken className="h-4 w-4 text-neutral-300" />,
   },
   {
     title: "The Art of Design",
     description: "Discover the beauty of thoughtful and functional design.",
     header: <Skeleton url={'https://res.cloudinary.com/dtt4nxboi/image/upload/v1753396126/2151141616_xrzrig.jpg'}/>,
     className: "md:col-span-1",
-    icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
+    icon: <IconSignature className="h-4 w-4 text-neutral-300" />,
   },
   {
     title: "The Power of Communication",
@@ -60,6 +60,6 @@ const items = [
       "Understand the impact of effective communication in our lives.",
     header: <Skeleton url={'https://res.cloudinary.com/dtt4nxboi/image/upload/v1753396184/2148932854_kbneak.jpg'}/>,
     className: "md:col-span-2",
-    icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
+    icon: <IconTableColumn className="h-4 w-4 text-neutral-300" />,
   },
 ];
