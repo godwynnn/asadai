@@ -7,9 +7,13 @@ import {
   useScroll,
   useMotionValueEvent,
 } from "motion/react";
-
+import { Goldman } from "next/font/google";
 import React, { useRef, useState } from "react";
 
+const GoldmanFont = Goldman({
+  weight: '400',
+  subsets: ["latin"],
+});
 
 export const Navbar = ({
   children,
@@ -213,7 +217,7 @@ export const NavbarButton = ({
   ...props
 }) => {
   const baseStyles =
-    "px-4 py-2 rounded-md bg-white button bg-white text-black text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
+    "px-4 py-2 rounded-md bg-white button bg-white text-black text-sm font-extrabold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
 
   const variantStyles = {
     primary:
@@ -227,7 +231,7 @@ export const NavbarButton = ({
   return (
     <Tag
       href={href || undefined}
-      className={cn(baseStyles, variantStyles[variant], className)}
+      className={cn(baseStyles, variantStyles[variant], className,GoldmanFont.className)}
       {...props}>
       {children}
     </Tag>

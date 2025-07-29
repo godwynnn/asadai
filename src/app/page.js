@@ -49,24 +49,24 @@ export default function Home() {
     const highlight = gsap.utils.toArray('.highlight')
 
     gsap.from('.highlight', {
-        scrollTrigger: {
-          trigger: ".highlight_holder",
-          start: "40% top",
-          // end:"bottom top",
-          // markers: true,
-          // pin:true,
-          scrub:true,
-          onEnter: () => {
-            console.log(element)
-          },
-          
+      scrollTrigger: {
+        trigger: ".highlight_holder",
+        start: "40% top",
+        // end:"bottom top",
+        // markers: true,
+        // pin:true,
+        scrub: true,
+        onEnter: () => {
+          // console.log(element)
         },
-        
-        y:20,
-        opacity:0,
-        stagger:0.3,
-        
-      })
+
+      },
+
+      y: 20,
+      opacity: 0,
+      stagger: 0.3,
+
+    })
 
 
     gsap.from('.hero_img', {
@@ -93,7 +93,8 @@ export default function Home() {
         scrub: true,
         // snap:1
       },
-      height: 0
+      height: 0,
+
 
     })
 
@@ -111,6 +112,40 @@ export default function Home() {
 
     })
 
+    gsap.to('.compare_overlay', {
+      scrollTrigger: {
+        trigger: '.compare',
+        start: '-30% 10%',
+        end: '60% 30%',
+        // markers: true,
+        scrub: true,
+
+
+      },
+      translateX: 0,
+      //  ease:"expo.in"
+
+    })
+
+    gsap.from('.compare_desc', {
+      scrollTrigger: {
+        trigger: '.compare',
+        start: '-30% top',
+        end: '60% 30%',
+        // markers: true,
+        scrub: true,
+
+
+      },
+      
+      opacity:0,
+      x:-20,
+      stagger:2,
+      delay:2,
+      //  ease:"expo.in"
+
+    })
+
   })
 
 
@@ -119,6 +154,15 @@ export default function Home() {
 
   const framer_2_content = `Turns your ideas into gallery-worthy visuals. Explore concepts without limits`
 
+  const framer_1_content = `We have made image generation as simple as typing a message.
+              No loading, no lag — just lightning-fast output.
+              Choose your style, write a prompt, and go.
+              See results in seconds.
+              Download in high resolution instantly.
+              Use it on web, mobile, or tablet.
+              Fast, powerful, and fun to use.
+              This is creative freedom on demand`
+
   const framer_2 = useRef(null)
   const { scrollYProgress } = useScroll({
     target: framer_2,
@@ -126,6 +170,7 @@ export default function Home() {
   })
 
   const framer_words = framer_2_content.split(" ")
+  const framer_1_words = framer_1_content.split(" ")
 
 
   return (
@@ -270,22 +315,42 @@ export default function Home() {
 
 
         <InfiniteMovingCardsDemo />
-        <div className="relative w-full h-[100vh] px-2 md:px-20 flex flex-col lg:flex-row md:flex-col text-[whitesmoke] items-center">
-          <div className="lg:w-[60%]  ">
-            <p className="font-semibold text-3xl lg:text-8xl md:text-7xl">Built for Speed and Simplicity</p>
-            <p className="font-extralight md:text-2xl  text-gray-300">
-              We have made image generation as simple as typing a message.
-              No loading, no lag — just lightning-fast output.
-              Choose your style, write a prompt, and go.
-              See results in seconds.
-              Download in high resolution instantly.
-              Use it on web, mobile, or tablet.
-              Fast, powerful, and fun to use.
-              This is creative freedom on demand
-            </p>
+        <div className="relative compare w-full h-[120vh] px-2 md:px-20 flex flex-col lg:flex-row md:flex-col text-[whitesmoke] items-center">
+          <div className="lg:w-[60%]  " >
+            <p className="font-semibold text-3xl lg:text-8xl md:text-7xl">Built for Speed and Simplicity</p><br />
+
+            {
+              framer_1_words.map((word, i) => {
+                return <span className="font-extralight md:text-2xl  text-gray-300 compare_desc" key={i}> {word}</span>
+              })
+            }
+
           </div>
 
-          <CompareDemo />
+          <div className=" relative overflow-x-hidden ">
+
+            {/* <div className=" w-full h-full "> */}
+            <Image
+              src={'https://res.cloudinary.com/dtt4nxboi/image/upload/v1753187232/srefhunt-image-to-prompt-768x480_fuabnr.png'}
+              height={1000}
+              width={1000}
+              className="rounded-lg"
+            />
+            {/* </div> */}
+
+
+            <div className="compare_overlay absolute top-0 right-0 w-full translate-x-[100%] h-full aspect-[4/3]">
+
+              <Image
+                src={'https://res.cloudinary.com/dtt4nxboi/image/upload/v1753396197/2151719581_qodysa.jpg'}
+                height={1000}
+                width={1000}
+                className="rounded-lg w-full h-full object-fill inset-0"
+              />
+            </div>
+          </div>
+
+          {/* <CompareDemo /> */}
           {/* <svg className="absolute -bottom-[60%] left-0 z-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#000814" fillOpacity="1" d="M0,256L720,128L1440,0L1440,0L720,0L0,0Z"></path></svg> */}
 
         </div>
@@ -310,9 +375,9 @@ export default function Home() {
             <div className={["mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:items-center font-extrabold", GoldmanFont.className]}>
               {/* Card */}
               <div className="flex flex-col md:h-[70vh] border border-gray-200 text-center bg-[whitesmoke] rounded-xl p-8">
-                <h4 className="font-medium text-lg text-gray-800">Free</h4>
-                <span className="mt-7 font-bold text-5xl text-gray-800">Free</span>
-                <p className="mt-2 text-sm text-gray-500">Forever free</p>
+                <h4 className="font-extrabold text-lg text-gray-800">Free</h4>
+                <span className="mt-7 font-extrabold text-5xl text-gray-800">Free</span>
+                <p className="mt-2 text-sm font-extrabold text-gray-500">Forever free</p>
 
                 <ul className="mt-7 space-y-2.5 text-sm">
                   <li className="flex gap-x-2">
@@ -337,7 +402,7 @@ export default function Home() {
                   </li>
                 </ul>
 
-                <a className="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-gray-50" href="#">
+                <a className="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-extrabold rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-gray-50" href="#">
                   Sign up
                 </a>
               </div>
@@ -376,7 +441,7 @@ export default function Home() {
                   </li>
                 </ul>
 
-                <a className="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none" href="#">
+                <a className="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-extrabold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none" href="#">
                   Sign up
                 </a>
               </div>
@@ -414,7 +479,7 @@ export default function Home() {
                   </li>
                 </ul>
 
-                <a className="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-gray-50" href="#">
+                <a className="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-extrabold rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-gray-50" href="#">
                   Sign up
                 </a>
               </div>
@@ -433,11 +498,11 @@ export default function Home() {
 
 
           {/* Features */}
-          <div className="max-w-[85rem]  px-4 py-10 sm:px-6 lg:px-14 lg:py-14 mx-auto bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,255,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)]">
+          <div className="max-w-[85rem]  px-4 py-10 sm:px-6 lg:px-14 lg:py-14 mx-auto bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,255,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)]" ref={framer_2}>
             {/* <div class="absolute top-0 z-[-2] h-screen w-screen bg-white bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,255,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)]"></div> */}
             {/* Grid */}
             <div className="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
-              <p className="font-extralight text-3xl lg:text-8xl text-gray-100 flex flex-wrap" ref={framer_2}>
+              <p className="font-extralight text-3xl lg:text-8xl text-gray-100 flex flex-wrap" >
                 {
                   framer_words.map((word, i) => {
 
