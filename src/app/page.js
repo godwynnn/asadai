@@ -335,6 +335,7 @@ export default function Home() {
               height={1000}
               width={1000}
               className="rounded-lg"
+              alt="compare_prompt"
             />
             {/* </div> */}
 
@@ -346,6 +347,7 @@ export default function Home() {
                 height={1000}
                 width={1000}
                 className="rounded-lg w-full h-full object-fill inset-0"
+                 alt="compare_generated_image"
               />
             </div>
           </div>
