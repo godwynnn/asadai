@@ -327,7 +327,7 @@ export default function Home() {
 
           </div>
 
-          <div className=" relative overflow-x-hidden ">
+          <div className=" relative overflow-hidden ">
 
             {/* <div className=" w-full h-full "> */}
             <Image
