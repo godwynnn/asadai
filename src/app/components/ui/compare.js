@@ -177,7 +177,7 @@ export const Compare = ({
                 clipPath: `inset(0 ${100 - sliderXPercent}% 0 0)`,
               }}
               transition={{ duration: 0 }}>
-              <img
+              <Image
                 alt="first image"
                 src={firstImage}
                 className={cn(

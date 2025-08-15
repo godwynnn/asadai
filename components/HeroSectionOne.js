@@ -2,6 +2,7 @@
 
 
 import { motion } from "motion/react";
+import Image from "next/image";
 
 export function HeroSectionOne() {
   
@@ -32,7 +33,7 @@ export function HeroSectionOne() {
           className="relative -top-14 md:-top-32 h-[80vh] md:h-full z-20 mt-0 rounded-3xl border  bg-neutral-800 p-4 shadow-md dark:border-neutral-100 dark:bg-neutral-900 hero_img">
           <div
             className="w-full overflow-hidden rounded-xl border h-[100%] border-gray-600 dark:border-gray-700">
-            <img
+            <Image
               src="https://res.cloudinary.com/dtt4nxboi/image/upload/v1753462059/b6a682c698aa6fcfee6411cb9b187f10_ihnetg.png"
               alt="Landing page preview"
               className="aspect-[16/9] h-[100%] md:h-auto w-full object-cover"
