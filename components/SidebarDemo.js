@@ -9,6 +9,7 @@ import {
 } from "@tabler/icons-react";
 import { motion } from "motion/react";
 import { cn } from "@/app/lib/utils";
+import Image from "next/image";
 
 
 export function SidebarDemo() {

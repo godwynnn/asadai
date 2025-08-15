@@ -12,9 +12,9 @@ export default function Footer() {
     {/* End Col */}
 
     <div className="mt-3">
-      <p className="text-gray-500">We're part of the <a className="text-blue-600 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium" href="#">Htmlstream</a> family.</p>
+      <p className="text-gray-500">We&apos;re part of the <a className="text-blue-600 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium" href="#"></a> </p>
       <p className="text-gray-500">
-        © 2025 Asad-ai.
+        © 2025 AsadAI.
       </p>
     </div>
 

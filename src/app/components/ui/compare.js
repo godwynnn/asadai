@@ -4,6 +4,8 @@ import { AnimatePresence, motion } from "motion/react";
 import { IconDotsVertical } from "@tabler/icons-react";
 import { cn } from "@/app/lib/utils";
 import { SparklesCore } from "./sparkles";
+import Image from "next/image";
+
 
 export const Compare = ({
   firstImage = "",

@@ -5,6 +5,8 @@ import HeaderComponent from '../components/ui/Header'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBriefcase } from '@fortawesome/free-solid-svg-icons'
+import Image from "next/image";
+
 
 export default function Dashboard() {
     return (
