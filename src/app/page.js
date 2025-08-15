@@ -364,7 +364,7 @@ export default function Home() {
           <BentoGridSecondDemo />
 
           {/* Pricing */}
-          <div className="max-w-[85rem] px-4 py-20 sm:px-6 lg:px-8 lg:py-14 mx-auto mt-36 text-white bg-[radial-gradient(100%_50%_at_50%_100%,rgba(0,163,255,0.13)_5%,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)]">
+          <div className={[GoldmanFont.className,"max-w-[85rem] px-4 py-20 sm:px-6 lg:px-8 lg:py-14 mx-auto mt-36 text-white bg-[radial-gradient(100%_50%_at_50%_100%,rgba(0,163,255,0.13)_5%,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)]"]}>
             {/* Title */}
             <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-20">
               <h2 className="text-2xl font-bold md:text-4xl md:leading-tight">Pricing</h2>
