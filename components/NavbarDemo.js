@@ -72,8 +72,8 @@ export function NavbarDemo({children}) {
               <NavbarButton
                 onClick={() => setIsMobileMenuOpen(false)}
                 variant="primary"
-                className="w-full">
-                Book a call
+                className="w-full" href={'/generate'}>
+               Generate
               </NavbarButton>
             </div>
           </MobileNavMenu>
