@@ -177,7 +177,7 @@ export default function Home() {
     <div className="w-full min-h-[120vh] bg-[#000814] pt-0">
 
       <NavbarDemo>
-        <div className="relative bg-linear-to-b mx-auto    [background:radial-gradient(105%_125%_at_50%_10%,#1b263b_35%,black_50%)] min-h-[120vh] flex flex-col header  ">
+        <div className="relative bg-linear-to-b mx-auto font-extrabold  [background:radial-gradient(105%_125%_at_50%_10%,#1b263b_35%,#000814_50%)] min-h-[120vh] flex flex-col header  ">
           {/* <div class="absolute inset-0 z-10 h-full w-full items-center px-5 py-24 "> */}
 
 
@@ -224,15 +224,15 @@ export default function Home() {
                       {/* Button Group */}
                       <div className="flex items-center">
                         {/* Mic Button */}
-                        <button type="button" className="inline-flex shrink-0 justify-center items-center size-8 rounded-lg text-gray-500 hover:bg-white focus:z-10 focus:outline-hidden focus:bg-white">
+                        {/* <button type="button" className="inline-flex shrink-0 justify-center items-center size-8 rounded-lg text-gray-500 hover:bg-white focus:z-10 focus:outline-hidden focus:bg-white">
                           <svg className="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" /><line x1="9" x2="15" y1="15" y2="9" /></svg>
-                        </button>
+                        </button> */}
                         {/* End Mic Button */}
 
                         {/* Attach Button */}
-                        <button type="button" className="inline-flex shrink-0 justify-center items-center size-8 rounded-lg text-gray-500 hover:bg-white focus:z-10 focus:outline-hidden focus:bg-white">
-                          <svg className="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48" /></svg>
-                        </button>
+                        <input type="button" className="inline-flex shrink-0 justify-center items-center size-8 rounded-lg text-gray-500 hover:bg-white focus:z-10 focus:outline-hidden focus:bg-white">
+                          {/* <svg className="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48" /></svg> */}
+                        </input>
                         {/* End Attach Button */}
                       </div>
                       {/* End Button Group */}
@@ -240,9 +240,9 @@ export default function Home() {
                       {/* Button Group */}
                       <div className="flex items-center gap-x-1">
                         {/* Mic Button */}
-                        <button type="button" className="inline-flex shrink-0 justify-center items-center size-8 rounded-lg text-gray-500 hover:bg-white focus:z-10 focus:outline-hidden focus:bg-white">
+                        {/* <button type="button" className="inline-flex shrink-0 justify-center items-center size-8 rounded-lg text-gray-500 hover:bg-white focus:z-10 focus:outline-hidden focus:bg-white">
                           <svg className="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" /><path d="M19 10v2a7 7 0 0 1-14 0v-2" /><line x1="12" x2="12" y1="19" y2="22" /></svg>
-                        </button>
+                        </button> */}
                         {/* End Mic Button */}
 
                         {/* Send Button */}

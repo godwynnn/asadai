@@ -118,14 +118,14 @@ export default function Dashboard() {
 
                 <div className="p-4 sm:p-6 space-y-4 space-x-3 sm:space-y-6 grid md:grid-cols-2">
                     {/* your content goes here ... */}
-                    <div className='space-y-10 flex  justify-around flex-col'>
+                    <div className='space-y-10 flex  items-center flex-col'>
 
                         <Dropzone onDrop={acceptedFiles => console.log(acceptedFiles)}>
                             {({ getRootProps, getInputProps }) => (
-                                <section className='md:w-[100%] '>
+                                <section className='md:w-[80%] '>
                                     <div {...getRootProps()}>
                                         <input {...getInputProps()} />
-                                        <div className="cursor-pointer p-12 h-[50vh] w-[80%] flex justify-center bg-gray-800 border shadow-2xl border-none border-gray-300 rounded-xl dark:bg-neutral-800 dark:border-neutral-600 dz-clickable" data-hs-file-upload-trigger="">
+                                        <div className="cursor-pointer p-12 h-[50vh] w-[100%] flex justify-center bg-gray-800 border shadow-2xl border-none border-gray-300 rounded-xl dark:bg-neutral-800 dark:border-neutral-600 dz-clickable" data-hs-file-upload-trigger="">
                                             <div className="text-center h-full">
                                                 <span className="inline-flex justify-center items-center size-16">
                                                     <svg className="shrink-0 w-16 h-auto" width="71" height="51" viewBox="0 0 71 51" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -168,7 +168,7 @@ export default function Dashboard() {
                             )}
                         </Dropzone>
 
-                        <div className="relative border border-gray-400 rounded-full">
+                        <div className="relative border border-gray-400 rounded-full w-full">
                             <input type="text" className="p-3 sm:p-4 block w-full border-gray-200 text-white outline-none rounded-full sm:text-md focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Ask me anything..." />
                             <div className="absolute top-1/2 end-2 -translate-y-1/2">
                                 <button type="button" className="size-10 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-500 hover:text-gray-800 focus:outline-hidden focus:text-gray-800 disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:text-white dark:focus:text-white">
